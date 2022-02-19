@@ -5,6 +5,11 @@ export const useStyles = makeStyles((theme) => ({
     maxWidth: "500px",
     height: "100vh",
     backgroundColor: "#CCC",
+    margin: "auto",
+  },
+  appBar: {
+    maxWidth: "500px",
+    position: "absolute",
   },
   webcam: {
     width: "100%",
