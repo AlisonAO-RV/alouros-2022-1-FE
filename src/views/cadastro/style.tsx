@@ -6,12 +6,19 @@ export const useStyles = makeStyles((theme) => ({
     height: "100vh",
     backgroundColor: "#CCC",
     margin: "auto",
-  },
-  appBar: {
-    maxWidth: "500px",
-    position: "absolute",
+    borderRadius: 0,
   },
   webcam: {
     width: "100%",
+  },
+
+  dialog: {
+    margin: "auto",
+    maxWidth: "500px",
+    borderRadius: 0,
+  },
+
+  button: {
+    borderRadius: 0,
   },
 }));
