@@ -32,7 +32,7 @@ const Cadastro = memo(() => {
   const [imgSrc, setImgSrc] = useState(null);
 
   const capture = useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot();
+    const imageSrc = webcamRef.current.getScreenshot({});
     setImgSrc(imageSrc);
   }, [webcamRef, setImgSrc]);
 
@@ -83,49 +83,29 @@ const Cadastro = memo(() => {
         </CardActions>
       </Card>
       <Dialog
-        fullScreen
         open={open}
         onClose={handleClose}
         TransitionComponent={Transition}
-        className={classes.todo}
+        className={classes.dialog}
       >
-        <AppBar className={classes.appBar}>
-          <Toolbar>
-            <IconButton
-              edge="start"
-              color="inherit"
-              onClick={handleClose}
-              aria-label="close"
-            >
-              <CloseIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              FOTO
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <br />
-        <br />
-        <br />
-        <div>
-          <Webcam
-            audio={false}
-            ref={webcamRef}
-            screenshotFormat="image/jpeg"
-            className={classes.webcam}
-          />
+        <Webcam
+          audio={false}
+          ref={webcamRef}
+          screenshotFormat="image/jpeg"
+          className={classes.webcam}
+        />
 
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.button}
-            endIcon={<PhotoCamera />}
-            onClick={capture}
-            fullWidth
-          >
-            Tirar Foto
-          </Button>
-        </div>
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          endIcon={<PhotoCamera />}
+          onClick={capture}
+          size="large"
+          fullWidth
+        >
+          Tirar Foto
+        </Button>
       </Dialog>
     </div>
   );
