@@ -48,7 +48,6 @@ const Home: React.FC = memo(() => {
             <Typography variant="h6" component="h2">
               Auditório ( Bloco I )
             </Typography>
-            <br />
             <Typography className={classes.pos} color="textSecondary">
               VAGAS DE EMPREGO E ESTÁGIO SERÃO DIVULGADAS NO EVENTO.
             </Typography>

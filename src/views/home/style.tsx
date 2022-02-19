@@ -15,10 +15,10 @@ export const useStyles = makeStyles((theme) => ({
   },
   card: {
     width: "100%",
-    minHeight: "540px",
+    minHeight: "510px",
   },
   media: {
-    height: 220,
+    height: 180,
     padding: "10px",
     margin: "10px",
   },
