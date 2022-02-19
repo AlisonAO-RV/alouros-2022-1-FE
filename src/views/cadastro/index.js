@@ -43,7 +43,7 @@ const Cadastro = memo(() => {
     setOpenMsg(false);
 
     if (sus) {
-      window.location.href = "/";
+      window.location.href = "/arrecadacao";
     }
   };
 
@@ -200,7 +200,7 @@ const Cadastro = memo(() => {
       </Backdrop>
 
       <Snackbar
-        autoHideDuration={1500}
+        autoHideDuration={1000}
         open={openMsg}
         onClose={handleClose}
         message={Msg}

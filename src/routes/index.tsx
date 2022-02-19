@@ -4,6 +4,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import Home from "../views/home";
 import Queue from "../views/queue";
 import Cadastro from "../views/cadastro";
+import Arrecadacao from "../views/arrecadacao";
 import WebCam from "../components/webCam";
 
 const RoutesLink: React.FC = () => (
@@ -12,6 +13,7 @@ const RoutesLink: React.FC = () => (
     <Route path="/" element={<Home />} />
     <Route path="queue" element={<Queue />} />
     <Route path="cadastro" element={<Cadastro />} />
+    <Route path="arrecadacao" element={<Arrecadacao />} />
     <Route path="webcam" element={<WebCam />} />
     <Route path="*" element={<NoMatch />} />
     {/* </Route> */}
