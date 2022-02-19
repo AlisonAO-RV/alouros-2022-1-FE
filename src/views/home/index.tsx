@@ -69,7 +69,6 @@ const Home: React.FC = memo(() => {
       </Card>
       <br />
       <img src={LogoUniRV} alt="logo Fasoft" width={"30%"} />
-      <Link to="cadastro/"></Link>
     </div>
   );
 });

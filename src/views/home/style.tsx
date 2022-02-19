@@ -15,6 +15,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   card: {
     width: "100%",
+    minHeight: "540px",
   },
   media: {
     height: 220,
