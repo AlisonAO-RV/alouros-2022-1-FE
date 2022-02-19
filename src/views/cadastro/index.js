@@ -15,6 +15,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useStyles } from "./style";
+import { LaptopWindows } from "@material-ui/icons";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -36,12 +37,17 @@ const Cadastro = memo(() => {
   };
 
   const handleClose = (event, reason) => {
+    setOpen(false);
+  };
+  const handleCloseMSG = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-
-    setOpen(false);
     setOpenMsg(false);
+
+    if (sus) {
+      window.location.href = "/";
+    }
   };
 
   const [openStatus, setOpenStatus] = useState(false);
@@ -49,6 +55,8 @@ const Cadastro = memo(() => {
   const [Msg, setMsg] = useState("false");
 
   const [openMsg, setOpenMsg] = useState(false);
+
+  const [sus, setSus] = useState(false);
 
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot({});
@@ -72,6 +80,7 @@ const Cadastro = memo(() => {
         console.log("aqui: ", response);
         setMsg("Cadastrado com Sucesso");
         setOpenMsg(true);
+        setSus(true);
       })
       .catch(function (error) {
         setMsg(error.response.data);
@@ -156,7 +165,7 @@ const Cadastro = memo(() => {
           disabled={imgSrc === null ? true : false}
           onClick={() => salvar()}
         >
-          Salvar Inscrição
+          Enviar Inscrição
         </Button>
       </form>
       <br />
@@ -195,11 +204,10 @@ const Cadastro = memo(() => {
       </Backdrop>
 
       <Snackbar
-        autoHideDuration={3000}
+        autoHideDuration={1500}
         open={openMsg}
-        onClose={handleClose}
+        onClose={handleCloseMSG}
         message={Msg}
-        onClick={handleClose}
       ></Snackbar>
     </div>
   );
