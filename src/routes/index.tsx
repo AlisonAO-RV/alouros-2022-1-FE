@@ -9,7 +9,7 @@ import WebCam from "../components/webCam";
 const RoutesLink: React.FC = () => (
   <Routes>
     {/* <Route path="/" element={<Home />}> */}
-    <Route index element={<Home />} />
+    <Route path="/" element={<Home />} />
     <Route path="queue" element={<Queue />} />
     <Route path="cadastro" element={<Cadastro />} />
     <Route path="webcam" element={<WebCam />} />
