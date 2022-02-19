@@ -156,7 +156,7 @@ const Cadastro = memo(() => {
           disabled={imgSrc === null ? true : false}
           onClick={() => salvar()}
         >
-          Foto
+          Salvar Inscrição
         </Button>
       </form>
       <br />
