@@ -15,7 +15,6 @@ import Snackbar from "@material-ui/core/Snackbar";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useStyles } from "./style";
-import { LaptopWindows } from "@material-ui/icons";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -37,12 +36,10 @@ const Cadastro = memo(() => {
   };
 
   const handleClose = (event, reason) => {
-    setOpen(false);
-  };
-  const handleCloseMSG = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
+    setOpen(false);
     setOpenMsg(false);
 
     if (sus) {
@@ -61,8 +58,8 @@ const Cadastro = memo(() => {
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot({});
     setImgSrc(imageSrc);
-    handleClose();
-  }, [webcamRef, setImgSrc]);
+    setOpen(false);
+  }, []);
 
   const salvar = () => {
     setOpenStatus(true);
@@ -85,7 +82,6 @@ const Cadastro = memo(() => {
       .catch(function (error) {
         setMsg(error.response.data);
         setOpenMsg(true);
-        // console.log(error.response.data);
       })
       .finally(() => {
         setOpenStatus(false);
@@ -206,7 +202,7 @@ const Cadastro = memo(() => {
       <Snackbar
         autoHideDuration={1500}
         open={openMsg}
-        onClose={handleCloseMSG}
+        onClose={handleClose}
         message={Msg}
       ></Snackbar>
     </div>
