@@ -133,7 +133,7 @@ const Cadastro = memo(() => {
         >
           <MenuItem value={"U"}>Unica Turma</MenuItem>
           <MenuItem value={"A"}>Turma A</MenuItem>
-          <MenuItem value={"D"}>Turma B</MenuItem>
+          <MenuItem value={"B"}>Turma B</MenuItem>
           <MenuItem value={"C"}>Turma C</MenuItem>
           <MenuItem value={"D"}>Turma D</MenuItem>
         </Select>
