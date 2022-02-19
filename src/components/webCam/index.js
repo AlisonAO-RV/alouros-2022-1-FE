@@ -20,7 +20,7 @@ const WebCam = memo(() => {
     const salvar = () => {
       let id = cont;
       setCont(id + 1);
-      Axios.post("http://localhost:3001/calouros", {
+      Axios.post("https://calouros-2022-1.herokuapp.com/calouros/calouros", {
         name: "Alison Teste",
         email: `teste${id}@teste.com.br`,
         periodo: "7",
@@ -35,7 +35,7 @@ const WebCam = memo(() => {
     };
 
     const receber = () => {
-      Axios.get("http://calouros-2022-1.herokuapp.com/calouros")
+      Axios.get("https://calouros-2022-1.herokuapp.com/calouros")
         .then((response) => {
           console.log(response.data);
           setResImgSrc(response.data);
