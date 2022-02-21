@@ -60,19 +60,19 @@ const Home: React.FC = memo(() => {
               VAGAS DE EMPREGO E ESTÁGIO SERÃO DIVULGADAS NO EVENTO.
             </Typography>
           </CardContent>
+          <CardActions>
+            <Button
+              size="large"
+              variant="contained"
+              fullWidth
+              color="primary"
+              component={Link}
+              to="cadastro/"
+            >
+              INCRIÇÃO
+            </Button>
+          </CardActions>
         </CardActionArea>
-        <CardActions>
-          <Button
-            size="large"
-            variant="contained"
-            fullWidth
-            color="primary"
-            component={Link}
-            to="cadastro/"
-          >
-            INCRIÇÃO
-          </Button>
-        </CardActions>
       </Card>
       <br />
       <Typography gutterBottom variant="h5" component="h2">

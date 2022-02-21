@@ -4,7 +4,6 @@ export const useStyles = makeStyles((theme) => ({
   root: {},
   todo: {
     maxWidth: "500px",
-    height: "100vh",
     // backgroundColor: "#CCC",
     margin: "auto",
     borderRadius: 0,
@@ -15,7 +14,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   card: {
     width: "100%",
-    minHeight: "530px",
   },
   media: {
     height: 180,
