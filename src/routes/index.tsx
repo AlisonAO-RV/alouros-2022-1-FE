@@ -18,11 +18,6 @@ const RoutesLink: React.FC = () => (
     <Route path="*" element={<NoMatch />} />
     {/* </Route> */}
   </Routes>
-  //   <Routes>
-  //   <Route index element={<Home />} />
-  //   <Route path="queue" element={<Queue />} />
-  //   <Route path="*" element={<Home />} />
-  // </Routes>
 );
 export default RoutesLink;
 
