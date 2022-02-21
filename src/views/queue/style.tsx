@@ -14,28 +14,35 @@ export const useStyles = makeStyles((theme) => ({
     padding: "20px",
   },
   topo: {
-    width: "500px",
+    width: "100%",
+    maxWidth: "500px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     zIndex: -1000,
   },
   base: {
-    width: "500px",
+    width: "100%",
+    maxWidth: "500px",
     height: "550px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     zIndex: -1000,
   },
+
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
     color: "#fff",
   },
   title: {},
   visible: {
+    width: "100%",
     margin: theme.spacing(4, 0, 2),
-    display: "block",
+    display: "flex",
+    flexDirection: "column",
+    textAlign: "center",
+    backgroundColor: "#EEEEE0",
   },
   noVisible: {
     margin: theme.spacing(4, 0, 2),
@@ -46,6 +53,6 @@ export const useStyles = makeStyles((theme) => ({
     maxWidth: "600px",
   },
   btZip: {
-    marginLeft: "80px",
+    // marginLeft: "80px",
   },
 }));

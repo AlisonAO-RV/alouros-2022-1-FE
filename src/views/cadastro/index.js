@@ -123,6 +123,7 @@ const Cadastro = memo(() => {
           <MenuItem value={6}>6° Periodo</MenuItem>
           <MenuItem value={7}>7° Periodo</MenuItem>
           <MenuItem value={8}>8° Periodo</MenuItem>
+          <MenuItem value={9}>Professores</MenuItem>
         </Select>
         <Select
           labelId="Turma"
@@ -135,7 +136,7 @@ const Cadastro = memo(() => {
           <MenuItem value={"A"}>Turma A</MenuItem>
           <MenuItem value={"B"}>Turma B</MenuItem>
           <MenuItem value={"C"}>Turma C</MenuItem>
-          <MenuItem value={"D"}>Turma D</MenuItem>
+          <MenuItem value={"P"}>Professor</MenuItem>
         </Select>
 
         <Button

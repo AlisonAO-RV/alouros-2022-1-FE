@@ -32,6 +32,7 @@ const Quere: React.FC = memo(() => {
   const [p1B, setP1B] = useState<data>([]);
   const [p1C, setP1C] = useState<data>([]);
   const [p1V, setP1V] = useState<data>([]);
+  const [p1P, setP1P] = useState<data>([]);
 
   const [total, setTotal] = useState<number>(0);
 
@@ -50,6 +51,7 @@ const Quere: React.FC = memo(() => {
     setP1B([]);
     setP1C([]);
     setP1V([]);
+    setP1P([]);
     Axios.get("https://calouros-2022-1.herokuapp.com/calouros")
       .then((response) => {
         // setData(response.data);
@@ -64,8 +66,11 @@ const Quere: React.FC = memo(() => {
           if (item.periodo === "1" && item.turma === "C") {
             setP1C((e) => [...e, item]);
           }
-          if (item.periodo !== "1") {
+          if (item.periodo !== "1" && item.periodo !== "9") {
             setP1V((e) => [...e, item]);
+          }
+          if (item.periodo === "9") {
+            setP1P((e) => [...e, item]);
           }
           return [];
         });
@@ -172,6 +177,29 @@ const Quere: React.FC = memo(() => {
     });
   }, [p1V]);
 
+  const DownloadZip_P1P = useCallback(async () => {
+    const jszip = new JSZip();
+    for (let i = 0; i < p1P.length; i++) {
+      let fileBlob = await fetch(
+        `data:application/octet-stream;"${p1P[i].imgBi}`
+      )
+        .then((r) => r.blob())
+        .then(
+          (blobFile) => new File([blobFile], "nome", { type: "image/jpg" })
+        );
+      jszip.file(
+        `${p1P[i].periodo}${p1P[i].turma} - ${p1P[i].name}.jpg`,
+        fileBlob,
+        { binary: true }
+      );
+    }
+
+    await jszip.generateAsync({ type: "blob" }).then(function (content) {
+      // see FileSaver.js
+      saveAs(content, "Professores.zip");
+    });
+  }, [p1P]);
+
   const [controle, setControle] = useState<boolean>(true);
 
   const gatilho = useCallback(async () => {
@@ -208,8 +236,8 @@ const Quere: React.FC = memo(() => {
       <div>
         <Typography
           variant="h6"
-          className={classes[`${p1A.length !== 0 ? "visible" : "noVisible"}`]}
           key="AT"
+          className={classes[`${p1B.length !== 0 ? "visible" : "noVisible"}`]}
         >
           1º Periodo - Turma: A - {p1A.length} inscritos
           <Button
@@ -285,6 +313,27 @@ const Quere: React.FC = memo(() => {
         </Typography>
         <List key="V">
           {p1V.map((item, index) => {
+            return <Lista data={item} index={`A-${index}`}></Lista>;
+          })}
+        </List>
+
+        <Typography
+          variant="h6"
+          className={classes[`${p1P.length !== 0 ? "visible" : "noVisible"}`]}
+          key="VT"
+        >
+          Professores - {p1P.length} inscritos
+          <Button
+            color="primary"
+            startIcon={<CloudDownloadIcon />}
+            onClick={DownloadZip_P1P}
+            className={classes.btZip}
+          >
+            Baixar Fotos .ZIP
+          </Button>
+        </Typography>
+        <List key="V">
+          {p1P.map((item, index) => {
             return <Lista data={item} index={`A-${index}`}></Lista>;
           })}
         </List>

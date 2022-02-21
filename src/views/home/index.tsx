@@ -54,7 +54,7 @@ const Home: React.FC = memo(() => {
               Local:
             </Typography>
             <Typography variant="h6" component="h2">
-              Auditório ( Bloco I )
+              Centro de Convenções da UniRV
             </Typography>
             <Typography className={classes.pos} color="textSecondary">
               VAGAS DE EMPREGO E ESTÁGIO SERÃO DIVULGADAS NO EVENTO.
