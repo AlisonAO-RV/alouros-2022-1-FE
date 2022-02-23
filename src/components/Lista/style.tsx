@@ -5,4 +5,7 @@ export const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     color: "#212121",
   },
+  espaco: {
+    marginRight: "15px",
+  },
 }));

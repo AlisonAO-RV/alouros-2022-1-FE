@@ -70,7 +70,7 @@ const Cadastro = memo(() => {
       password: "fasoft-2022-1",
       confirmPassword: "fasoft-2022-1",
       turma: turma,
-      imgUrl: "base64",
+      imgUrl: "false",
       imgBi: imgSrc,
     })
       .then((response) => {

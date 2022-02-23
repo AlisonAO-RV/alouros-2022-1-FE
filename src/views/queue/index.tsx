@@ -21,7 +21,7 @@ type data = {
   email: string;
   periodo: string;
   turma: string;
-  imgUrl: string;
+  imgUrl: boolean;
   imgBi: string;
 }[];
 
@@ -34,6 +34,8 @@ const Quere: React.FC = memo(() => {
   const [p1V, setP1V] = useState<data>([]);
   const [p1P, setP1P] = useState<data>([]);
 
+  const [todos, setTodos] = useState<data>([]);
+
   const [total, setTotal] = useState<number>(0);
 
   const [open, setOpen] = useState(false);
@@ -43,6 +45,30 @@ const Quere: React.FC = memo(() => {
   // const handleToggle = () => {
   //   setOpen(!open);
   // };
+
+  // const DownloadJSON = () => {
+  //   const data = JSON.stringify(todos);
+  //   console.log(data);
+  //   var link = document.createElement("a");
+  //   link.download = "BancoCalouros.json";
+  //   // link.href =  data;
+  //   link.href =  {`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(data))}`};
+  //   link.click();
+  // };
+
+  const DownloadJSON = useCallback(async () => {
+    try {
+      const file = `data:text/json;charset=utf-8,${encodeURIComponent(
+        JSON.stringify(todos)
+      )}`;
+      var link = document.createElement("a");
+      link.download = "banco_Calouros.json";
+      link.href = file;
+      link.click();
+    } catch (error) {
+      console.log(error);
+    }
+  }, [todos]);
 
   const receber = useCallback(async () => {
     // handleToggle();
@@ -55,8 +81,21 @@ const Quere: React.FC = memo(() => {
     Axios.get("https://calouros-2022-1.herokuapp.com/calouros")
       .then((response) => {
         // setData(response.data);
-        setTotal(response.data.length);
-        response.data.map((item) => {
+        const DataTodos = response.data;
+        DataTodos.sort(function (a, b) {
+          if (a.name < b.name) {
+            return -1;
+          }
+          if (a.name > b.name) {
+            return 1;
+          }
+          return 0;
+        });
+
+        setTotal(DataTodos.length);
+        DataTodos.map((item) => {
+          item.imgUrl = item.imgUrl !== "true" ? false : true;
+          setTodos((e) => [...e, item]);
           if (item.periodo === "1" && item.turma === "A") {
             setP1A((e) => [...e, item]);
           }
@@ -66,7 +105,11 @@ const Quere: React.FC = memo(() => {
           if (item.periodo === "1" && item.turma === "C") {
             setP1C((e) => [...e, item]);
           }
-          if (item.periodo !== "1" && item.periodo !== "9") {
+          if (
+            item.periodo !== "1" &&
+            item.periodo !== "9" &&
+            item.periodo !== "D"
+          ) {
             setP1V((e) => [...e, item]);
           }
           if (item.periodo === "9") {
@@ -320,7 +363,7 @@ const Quere: React.FC = memo(() => {
         <Typography
           variant="h6"
           className={classes[`${p1P.length !== 0 ? "visible" : "noVisible"}`]}
-          key="VT"
+          key="PT"
         >
           Professores - {p1P.length} inscritos
           <Button
@@ -332,15 +375,29 @@ const Quere: React.FC = memo(() => {
             Baixar Fotos .ZIP
           </Button>
         </Typography>
-        <List key="V">
+        <List key="P">
           {p1P.map((item, index) => {
             return <Lista data={item} index={`A-${index}`}></Lista>;
           })}
         </List>
       </div>
+      <br />
+      <div className={classes.buttonAtualizar}>
+        <Button
+          size="large"
+          variant="contained"
+          fullWidth
+          color="inherit"
+          onClick={DownloadJSON}
+        >
+          Baixar relação JSON
+        </Button>
+      </div>
+      <br />
       <div className={classes.base}>
         <img src={LogoUniRV} alt="logo Fasoft" width={"30%"} />
       </div>
+
       <br />
       <br />
       <label>By: AlisonAO</label>
