@@ -79,6 +79,7 @@ const Quere: React.FC = memo(() => {
     setP1C([]);
     setP1V([]);
     setP1P([]);
+    setTodos2([]);
     Axios.get("https://calouros-2022-1.herokuapp.com/calouros")
       .then((response) => {
         // setData(response.data);
