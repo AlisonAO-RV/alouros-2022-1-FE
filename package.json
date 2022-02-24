@@ -1,7 +1,7 @@
 {
   "name": "calouros",
   "version": "0.1.0",
-  "homepage": "/",
+  "homepage": "https://fasoft-2022.herokuapp.com/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",
