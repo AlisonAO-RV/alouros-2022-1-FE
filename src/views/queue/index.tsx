@@ -99,17 +99,23 @@ const Quere: React.FC = memo(() => {
           if (item.periodo === "1" && item.turma === "A") {
             setP1A((e) => [...e, item]);
             setTodos2((e) => [...e, item]);
-            if (item.imgUrl === "true") setTodos((e) => [...e, item]);
+            if (item.imgUrl === "true") {
+              setTodos((e) => [...e, item]);
+            }
           }
           if (item.periodo === "1" && item.turma === "B") {
             setP1B((e) => [...e, item]);
             setTodos2((e) => [...e, item]);
-            if (item.imgUrl === "true") setTodos((e) => [...e, item]);
+            if (item.imgUrl === "true") {
+              setTodos((e) => [...e, item]);
+            }
           }
           if (item.periodo === "1" && item.turma === "C") {
             setP1C((e) => [...e, item]);
             setTodos2((e) => [...e, item]);
-            if (item.imgUrl === "true") setTodos((e) => [...e, item]);
+            if (item.imgUrl === "true") {
+              setTodos((e) => [...e, item]);
+            }
           }
           if (
             item.periodo !== "1" &&
@@ -118,7 +124,9 @@ const Quere: React.FC = memo(() => {
           ) {
             setP1V((e) => [...e, item]);
             setTodos2((e) => [...e, item]);
-            if (item.imgUrl === "true") setTodos((e) => [...e, item]);
+            if (item.imgUrl === "true") {
+              setTodos((e) => [...e, item]);
+            }
           }
           if (item.periodo === "9") {
             setP1P((e) => [...e, item]);

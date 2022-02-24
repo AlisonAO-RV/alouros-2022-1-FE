@@ -1,6 +1,7 @@
 {
   "name": "calouros",
   "version": "0.1.0",
+  "homepage": "https://fasoft-2022.dakino.com.br/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",

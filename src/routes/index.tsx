@@ -11,10 +11,10 @@ const RoutesLink: React.FC = () => (
   <Routes>
     {/* <Route path="/" element={<Home />}> */}
     <Route path="/" element={<Home />} />
-    <Route path="lista" element={<Queue />} />
-    <Route path="cadastro" element={<Cadastro />} />
-    <Route path="arrecadacao" element={<Arrecadacao />} />
-    <Route path="webcam" element={<WebCam />} />
+    <Route path="/lista" element={<Queue />} />
+    <Route path="/cadastro" element={<Cadastro />} />
+    <Route path="/arrecadacao" element={<Arrecadacao />} />
+    <Route path="/webcam" element={<WebCam />} />
     <Route path="*" element={<NoMatch />} />
     {/* </Route> */}
   </Routes>
