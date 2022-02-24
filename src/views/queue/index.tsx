@@ -95,22 +95,25 @@ const Quere: React.FC = memo(() => {
         setTotal(DataTodos.length);
         DataTodos.map((item) => {
           item.imgUrl = item.imgUrl !== "true" ? false : true;
-          setTodos((e) => [...e, item]);
           if (item.periodo === "1" && item.turma === "A") {
             setP1A((e) => [...e, item]);
+            if (item.imgUrl === "true") setTodos((e) => [...e, item]);
           }
           if (item.periodo === "1" && item.turma === "B") {
             setP1B((e) => [...e, item]);
+            if (item.imgUrl === "true") setTodos((e) => [...e, item]);
           }
           if (item.periodo === "1" && item.turma === "C") {
             setP1C((e) => [...e, item]);
+            if (item.imgUrl === "true") setTodos((e) => [...e, item]);
           }
           if (
             item.periodo !== "1" &&
             item.periodo !== "9" &&
-            item.periodo !== "D"
+            item.turma !== "D"
           ) {
             setP1V((e) => [...e, item]);
+            if (item.imgUrl === "true") setTodos((e) => [...e, item]);
           }
           if (item.periodo === "9") {
             setP1P((e) => [...e, item]);
