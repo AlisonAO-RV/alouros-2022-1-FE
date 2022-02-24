@@ -12,7 +12,6 @@ import Snackbar from "@material-ui/core/Snackbar";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Fade from "@material-ui/core/Fade";
 import CancelIcon from "@material-ui/icons/Cancel";
-import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
 
 type Props = {
   data: {
@@ -114,8 +113,7 @@ const Lista: React.FC<Props> = memo(({ data, index }) => {
             }
           >
             <Avatar>
-              {/* <img src={data.imgBi} width={"100%"} /> */}
-              <CloudDownloadIcon />
+              <img src={data.imgBi} width={"100%"} />
             </Avatar>
           </IconButton>
         </ListItemAvatar>
