@@ -35,6 +35,7 @@ const Quere: React.FC = memo(() => {
   const [p1P, setP1P] = useState<data>([]);
 
   const [todos, setTodos] = useState<data>([]);
+  const [todos2, setTodos2] = useState<data>([]);
 
   const [total, setTotal] = useState<number>(0);
 
@@ -92,19 +93,21 @@ const Quere: React.FC = memo(() => {
           return 0;
         });
 
-        setTotal(DataTodos.length);
         DataTodos.map((item) => {
           item.imgUrl = item.imgUrl !== "true" ? false : true;
           if (item.periodo === "1" && item.turma === "A") {
             setP1A((e) => [...e, item]);
+            setTodos2((e) => [...e, item]);
             if (item.imgUrl === "true") setTodos((e) => [...e, item]);
           }
           if (item.periodo === "1" && item.turma === "B") {
             setP1B((e) => [...e, item]);
+            setTodos2((e) => [...e, item]);
             if (item.imgUrl === "true") setTodos((e) => [...e, item]);
           }
           if (item.periodo === "1" && item.turma === "C") {
             setP1C((e) => [...e, item]);
+            setTodos2((e) => [...e, item]);
             if (item.imgUrl === "true") setTodos((e) => [...e, item]);
           }
           if (
@@ -113,13 +116,16 @@ const Quere: React.FC = memo(() => {
             item.turma !== "D"
           ) {
             setP1V((e) => [...e, item]);
+            setTodos2((e) => [...e, item]);
             if (item.imgUrl === "true") setTodos((e) => [...e, item]);
           }
           if (item.periodo === "9") {
             setP1P((e) => [...e, item]);
+            setTodos2((e) => [...e, item]);
           }
           return [];
         });
+        setTotal(todos2.length);
         setOpen(false);
         // handleClose();
       })
@@ -129,7 +135,7 @@ const Quere: React.FC = memo(() => {
 
         console.error("ex", ex);
       });
-  }, [open]);
+  }, [open, todos2]);
 
   const DownloadZip_P1A = useCallback(async () => {
     const jszip = new JSZip();
@@ -264,7 +270,7 @@ const Quere: React.FC = memo(() => {
       <div className={classes.topo}>
         <img src={LogoFasoft} alt="logo Fasoft" width={"70%"} />
         <Typography variant="h6" className={classes.title} key="AT">
-          Total de inscritos: {total}
+          Total de inscritos: {todos2.length}
         </Typography>
         <br />
       </div>
