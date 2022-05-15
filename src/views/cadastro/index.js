@@ -43,7 +43,7 @@ const Cadastro = memo(() => {
     setOpenMsg(false);
 
     if (sus) {
-      window.location.href = "/arrecadacao";
+      window.location.href = "/#/arrecadacao";
     }
   };
 
@@ -70,7 +70,7 @@ const Cadastro = memo(() => {
       password: "fasoft-2022-1",
       confirmPassword: "fasoft-2022-1",
       turma: turma,
-      imgUrl: "false",
+      imgUrl: "false", // confirmação de pagamento
       imgBi: imgSrc,
     })
       .then((response) => {
