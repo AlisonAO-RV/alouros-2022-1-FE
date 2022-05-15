@@ -1,0 +1,13 @@
+version: '3'
+services:
+  frontend:
+    hostname: unirv-frontend-inscricao
+    container_name: unirv-frontend-inscricao
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    image: unirv/inscricoes
+    ports:
+      - "80:80"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
